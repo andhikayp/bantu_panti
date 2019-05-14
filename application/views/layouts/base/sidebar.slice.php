@@ -27,7 +27,7 @@
                 <div class="content-header-item">
                     <a class="link-effect font-w700" href="#">
                         <i class="fa fa-database text-primary"></i>
-                        <span class="font-size-xl text-dual-primary-dark">ruang</span> <span class="font-size-xl text-primary">data</span>
+                        <span class="font-size-xl text-dual-primary-dark">Bantu</span> <span class="font-size-xl text-primary">Panti</span>
                     </a>
                 </div>
                 <!-- END Logo -->
@@ -40,7 +40,7 @@
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                <img class="img-avatar img-avatar32" src="https://kantor.ppdbsda.net/img/favicon.ico"
+                <img class="img-avatar img-avatar32" src="http://localhost/bantu_panti//upload/paket_20190127-082258.png"
                     alt="">
             </div>
             <!-- END Visible only in mini mode -->
@@ -48,7 +48,7 @@
             <!-- Visible only in normal mode -->
             <div class="sidebar-mini-hidden-b text-center">
                 <a class="img-link" href="#">
-                    <img class="img-avatar" src="https://kantor.ppdbsda.net/img/favicon.ico" alt="">
+                    <img class="img-avatar" src="http://localhost/bantu_panti//upload/paket_20190127-082258.png" alt="">
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
@@ -80,22 +80,30 @@
                         <i class="fa fa-home"></i><span class="sidebar-mini-hide">Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="{{ base_url('AdminController/statistik') }}" class="
                         @if($this->router->fetch_class() == 'AdminController' && $this->router->fetch_method() == 'statistik')
                             active
                         @endif">
                         <i class="fa fa-bar-chart "></i><span class="sidebar-mini-hide">Statistik</span>
                     </a>
-                </li>
-                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">User</span></li>
+                </li> -->
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen User</span></li>
                 @if($this->session->user_login['role'] == 'd01')
                 <li>
-                    <a href="{{ base_url('AdminController/userPetugas') }}" class="
-                        @if($this->router->fetch_class() == 'AdminController' && ($this->router->fetch_method() == 'userPetugas' || $this->router->fetch_method() == 'tambahUser' || $this->router->fetch_method() == 'resetPassword'))
+                    <a href="{{ base_url('AdminController/userAnakPanti') }}" class="
+                        @if($this->router->fetch_class() == 'AdminController' && ($this->router->fetch_method() == 'userAnakPanti' || $this->router->fetch_method() == 'tambahUserAnakPanti' || $this->router->fetch_method() == 'resetPasswordAnakPanti'))
                             active
                         @endif">
-                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Manajemen User Petugas</span>
+                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Anak Panti</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ base_url('AdminController/userDonatur') }}" class="
+                        @if($this->router->fetch_class() == 'AdminController' && ($this->router->fetch_method() == 'userDonatur' || $this->router->fetch_method() == 'tambahUserDonatur' || $this->router->fetch_method() == 'resetPasswordDonatur'))
+                            active
+                        @endif">
+                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Donatur</span>
                     </a>
                 </li>
                 @else
@@ -127,7 +135,7 @@
                 </li>
                 <li>
                     <a href="{{ base_url('SekolahController/anggaran_kecamatan') }}" class="
-                        @if($this->router->fetch_class() == 'SekolahController' && $this->router->fetch_method() == 'anggaran_kecamatan')
+                        @if($this->router->fetch_class() == 'SekolahController' && $this->router->fetch_method() == 'anggaranamatan')
                             active
                         @endif">
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Anggaran Tiap Kecamatan</span>

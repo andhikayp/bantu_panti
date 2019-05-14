@@ -1,12 +1,16 @@
 <?php 
     class Users extends CI_Model{
 
-        public function getAllUsers(){ 
-            $this->db->select('*');
-            $this->db->from('users_kantor');
-            $this->db->where('id_role', 3);
-            $query = $this->db->get();
-            return $query->result();
+        public function getAllDonatur()
+        { 
+            $sql = "SELECT * from users_kantor where id_role = '3';"; 
+            return $this->db->query($sql)->result();
+        }
+
+        public function getAllAnakPanti()
+        { 
+            $sql = "SELECT * from users_kantor where id_role = '4';"; 
+            return $this->db->query($sql)->result();
         }
 
         public function dptUsers(){ 
@@ -16,12 +20,10 @@
             return $query->result();
         }
 
-        public function getUser($id){ 
-            $this->db->select('*');
-            $this->db->from('users_kantor');
-            $this->db->where('username', $id);
-            $query = $this->db->get(); 
-            return $query->first_row();
+        public function getUser($id)
+        { 
+            $sql = "SELECT * from users_kantor where username = ? ;"; 
+            return $this->db->query($sql, array($id))->first_row();
         }
 
         public function get_survey($id){ 
@@ -30,6 +32,46 @@
             $this->db->where('id', $id);
             $query = $this->db->get(); 
             return $query->first_row();
+        }
+
+        public function createUserDonatur($username, $password)
+        {
+            $insert_data = [
+                'username' => $username,
+                'password' => $password,
+                'salt' => 'jaDzqvi93kHFY',
+                'id_role' => 3,
+                'created_on' => date('Y-m-d'),
+            ];
+            try
+            {
+                $this->db->insert('users_kantor', $insert_data);
+                return true;
+            }
+            catch(Exception $e)
+            {
+                return false;
+            }
+        }
+
+        public function createUserAnakPanti($username, $password)
+        {
+            $insert_data = [
+                'username' => $username,
+                'password' => $password,
+                'salt' => 'jaDzqvi93kHFY',
+                'id_role' => 4,
+                'created_on' => date('Y-m-d'),
+            ];
+            try
+            {
+                $this->db->insert('users_kantor', $insert_data);
+                return true;
+            }
+            catch(Exception $e)
+            {
+                return false;
+            }
         }
 
         public function updateProfil($id, $data = []){
@@ -79,30 +121,10 @@
             }
         }
 
-        public function createUser($username, $password){
-
-            $insert_data = [
-                'username' => $username,
-                'password' => $password,
-                'salt' => 'jaDzqvi93kHFY',
-                'id_role' => 3,
-                'created_on' => date('Y-m-d'),
-            ];
-
-            try{
-                $this->db->insert('users_kantor', $insert_data);
-                return true;
-            }catch(Exception $e)
-            {
-                return false;
-            }
-        }
-
         public function resetPass($username,$password)
         {
             $this->db->set('password', $password);
             $this->db->where('username', $username);
-
             if($this->db->update('users_kantor'))
             {
                 return true;
@@ -110,12 +132,15 @@
             else return false;
         }
 
-        public function delUser($username){
+        public function delUser($username)
+        {
             $this->db->where('username', $username);
-            try{
+            try
+            {
                 $this->db->delete('users_kantor');
                 return true;
-            }catch(Exception $e)
+            }
+            catch(Exception $e)
             {
                 return false;
             }
@@ -130,39 +155,6 @@
             {
                 return false;
             }
-        }
-
-        public function count_user()
-        {
-            $this->db->select('count(distinct username_update) as jumlah');
-            $this->db->from('sekolah');
-            $query = $this->db->get(); 
-            return $query->result();
-        }
-
-        public function count_all_user()
-        {
-            $this->db->select('count(*) as jumlah');
-            $this->db->from('users_kantor');
-            $this->db->where('id_role', 3);
-            $query = $this->db->get(); 
-            return $query->result();
-        }
-
-        public function count_all_sekolah()
-        {
-            $this->db->select('count(*) as jumlah');
-            $this->db->from('sekolah');
-            $query = $this->db->get(); 
-            return $query->result();
-        }
-
-        public function count_sekolah()
-        {
-            $this->db->select('count(username_update) as jumlah');
-            $this->db->from('sekolah');
-            $query = $this->db->get(); 
-            return $query->result();
         }
     }
 ?>   

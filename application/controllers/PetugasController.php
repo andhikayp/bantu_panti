@@ -23,8 +23,8 @@ class PetugasController extends MY_Protectedcontroller
 			$this->username = $this->session->user_login['username'];			
 		}
 
-		$this->can_read = ['a01', 'd01', 'p01'];
-		$this->can_write = ['a01', 'd01', 'p01'];
+		$this->can_read = ['a01', 'd01', 'p01', 'ap01'];
+		$this->can_write = ['a01', 'd01', 'p01', 'ap01'];
 		
 		if(!in_array($this->session->user_login['role'], $this->can_read))
 		{

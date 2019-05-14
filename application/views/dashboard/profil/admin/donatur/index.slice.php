@@ -26,20 +26,20 @@
 
 <nav class="breadcrumb bg-white push">
     <a class="breadcrumb-item" href="{{ base_url('/') }}">Dashboard</a>
-    <span class="breadcrumb-item active">Manajemen User Petugas</span>
+    <span class="breadcrumb-item active">Manajemen User Donatur</span>
 </nav>
 <div class="block">
     <div class="block-header block-header-default bg-primary">
-        <h3 class="block-title">Manajemen User Petugas</h3>
+        <h3 class="block-title">Manajemen Donatur</h3>
     </div>
     <div class="block-content">
-        <a href="{{ base_url('AdminController/tambahUser') }}" class="btn btn-sm bg-earth text-white mb-3"><i class="fa fa-plus mr-2"></i>Tambah User Petugas</a>
+        <a href="{{ base_url('AdminController/tambahUserDonatur') }}" class="btn btn-sm bg-earth text-white mb-3"><i class="fa fa-plus mr-2"></i>Tambah Data Donatur</a>
         <div class="table-responsive">
             <table id="table-ruang" class="stripe table table-stripped">
                 <thead>
                     <tr>
                         <th class="text-center">Username</th>
-                        <th class="text-center">Nama Petugas</th>
+                        <th class="text-center">Nama Donatur</th>
                         <th class="text-center">No Telepon</th>
                         <th class="text-center">Aksi</th>
                     </tr>
@@ -52,8 +52,8 @@
                         <td class="text-center">{{ $data->no_hape_petugas }}</td>
                         <td class="text-center" style="min-width: 260px">
                             <span>
-                                <a href="{{ base_url('AdminController/resetPassword/'.$data->username) }}" class="btn btn-sm btn-primary mr-2"><i class="fa fa-refresh mr-2"></i>Reset Password</a>
-                                <button value="{{ base_url('AdminController/deleteUser/'.$data->username) }}" class="btn btn-sm btn-danger hapus-satu"><i class="fa fa-trash mr-2"></i>Hapus User</button>
+                                <a href="{{ base_url('AdminController/resetPasswordDonatur/'.$data->username) }}" class="btn btn-sm btn-primary mr-2"><i class="fa fa-refresh mr-2"></i>Reset Password</a>
+                                <button value="{{ base_url('AdminController/deleteUserDonatur/'.$data->username) }}" class="btn btn-sm btn-danger hapus-satu"><i class="fa fa-trash mr-2"></i>Hapus User</button>
                             </span>
                         </td>
                     </tr>

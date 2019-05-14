@@ -5,7 +5,8 @@ require_once APPPATH.'/core/MY_Protectedcontroller.php';
 
 class AdminController extends MY_Protectedcontroller
 {
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->library('slice');
 		$this->load->library('form_validation');
@@ -29,91 +30,183 @@ class AdminController extends MY_Protectedcontroller
 		}
 	}
 
-	public function userPetugas(){
-		$data['petugas'] = $this->users->getAllUsers();
-		$this->slice->view('dashboard.profil.admin.index', $data);
+	public function userDonatur()
+	{
+		$data['petugas'] = $this->users->getAllDonatur();
+		$this->slice->view('dashboard.profil.admin.donatur.index', $data);
 	}
 
-	public function tambahUser(){
+	public function userAnakPanti()
+	{
+		$data['petugas'] = $this->users->getAllAnakPanti();
+		$this->slice->view('dashboard.profil.admin.anak_panti.index', $data);
+	}
+
+	public function tambahUserDonatur()
+	{
 		if(!in_array($this->session->user_login['role'], $this->can_write)){
 			show_404();
 		}
-
-		if ($_SERVER['REQUEST_METHOD'] == "GET"){
-			$this->slice->view('dashboard.profil.admin.tambah');
+		if ($_SERVER['REQUEST_METHOD'] == "GET")
+		{
+			$this->slice->view('dashboard.profil.admin.donatur.tambah');
 		}
-		elseif($_SERVER['REQUEST_METHOD'] == "POST"){
+		elseif($_SERVER['REQUEST_METHOD'] == "POST")
+		{
 			$username = $this->input->post('username');
 			$password = crypt($this->input->post('password'),'jaDzqvi93kHFY');
 
 			$val_petugas = $this->users->getUser($username);
-			if(!$val_petugas){
+			if(!$val_petugas)
+			{
 				$username = $this->input->post('username');
-			} else {
+			} 
+			else 
+			{
 				$this->session->set_flashdata('message', array('type' => 'error', 'message' => ['Username Sudah Digunakan']));
-				return redirect(base_url('AdminController/tambahUser'));	
+				return redirect(base_url('AdminController/tambahUserDonatur'));	
 			}
 
-			$status = $this->users->createUser($username, $password);
+			$status = $this->users->createUserDonatur($username, $password);
 			// var_dump($status); return;
 
 			if(!$status){
 				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
 				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
-				return redirect(base_url('AdminController/tambahUser'));	
+				return redirect(base_url('AdminController/tambahUserDonatur'));	
 			}
 			else{
 				$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Sukses Menambah User']));
-				return redirect(base_url('AdminController/userPetugas'));	
+				return redirect(base_url('AdminController/userDonatur'));	
 			}
 		}
-		else{
+		else
+		{
 			show_error("Method Not Allowed", 405);
 		}
 	}
 
-	public function resetPassword($id){
-		$data['petugas'] = $this->users->getUser($id);
-
+	public function tambahUserAnakPanti()
+	{
 		if(!in_array($this->session->user_login['role'], $this->can_write)){
 			show_404();
 		}
-
-		if ($_SERVER['REQUEST_METHOD'] == "GET"){
-			$this->slice->view('dashboard.profil.admin.password', $data);
+		if ($_SERVER['REQUEST_METHOD'] == "GET")
+		{
+			$this->slice->view('dashboard.profil.admin.anak_panti.tambah');
 		}
-		elseif($_SERVER['REQUEST_METHOD'] == "POST"){
+		elseif($_SERVER['REQUEST_METHOD'] == "POST")
+		{
+			$username = $this->input->post('username');
 			$password = crypt($this->input->post('password'),'jaDzqvi93kHFY');
-			$status = $this->users->resetPass($id, $password);
+
+			$val_petugas = $this->users->getUser($username);
+			if(!$val_petugas)
+			{
+				$username = $this->input->post('username');
+			} 
+			else 
+			{
+				$this->session->set_flashdata('message', array('type' => 'error', 'message' => ['Username Sudah Digunakan']));
+				return redirect(base_url('AdminController/tambahUserDonatur'));	
+			}
+
+			$status = $this->users->createUserAnakPanti($username, $password);
+			// var_dump($status); return;
 
 			if(!$status){
 				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
 				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
-				return redirect(base_url('AdminController/resetPassword'));	
+				return redirect(base_url('AdminController/tambahUserAnakPanti'));	
 			}
 			else{
-				$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Reset Password Sukses']));
-				return redirect(base_url('AdminController/userPetugas'));	
+				$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Sukses Menambah User']));
+				return redirect(base_url('AdminController/userAnakPanti'));	
 			}
 		}
-		else{
+		else
+		{
 			show_error("Method Not Allowed", 405);
 		}
 	}
 
-	public function deleteUser($username){
-		$this->users->deluser($username);
-		$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['User Berhasil Dihapus']));
-		return redirect(base_url('AdminController/userPetugas'));
+	public function resetPasswordAnakPanti($id)
+	{
+		$data['petugas'] = $this->users->getUser($id);
+		if(!in_array($this->session->user_login['role'], $this->can_write))
+		{
+			show_404();
+		}
+		if ($_SERVER['REQUEST_METHOD'] == "GET")
+		{
+			$this->slice->view('dashboard.profil.admin.anak_panti.password', $data);
+		}
+		elseif($_SERVER['REQUEST_METHOD'] == "POST")
+		{
+			$password = crypt($this->input->post('password'),'jaDzqvi93kHFY');
+			$status = $this->users->resetPass($id, $password);
+			if(!$status)
+			{
+				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
+				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
+				return redirect(base_url('AdminController/resetPasswordAnakPanti'));	
+			}
+			else
+			{
+				$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Reset Password Sukses']));
+				return redirect(base_url('AdminController/userAnakPanti'));	
+			}
+		}
+		else
+		{
+			show_error("Method Not Allowed", 405);
+		}
 	}
 
-	public function statistik()
+	public function resetPasswordDonatur($id)
 	{
-		$data['petugas'] = $this->users->count_user();
-		$data['all'] = $this->users->count_all_user();
-		$data['sekolah'] = $this->users->count_sekolah();
-		$data['all_sekolah'] = $this->users->count_all_sekolah();
-		// var_dump($data['petugas']); return;
-		$this->slice->view('dashboard.statistik', $data);
+		$data['petugas'] = $this->users->getUser($id);
+		if(!in_array($this->session->user_login['role'], $this->can_write))
+		{
+			show_404();
+		}
+		if ($_SERVER['REQUEST_METHOD'] == "GET")
+		{
+			$this->slice->view('dashboard.profil.admin.donatur.password', $data);
+		}
+		elseif($_SERVER['REQUEST_METHOD'] == "POST")
+		{
+			$password = crypt($this->input->post('password'),'jaDzqvi93kHFY');
+			$status = $this->users->resetPass($id, $password);
+			if(!$status)
+			{
+				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
+				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
+				return redirect(base_url('AdminController/resetPasswordDonatur'));	
+			}
+			else
+			{
+				$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Reset Password Sukses']));
+				return redirect(base_url('AdminController/userDonatur'));	
+			}
+		}
+		else
+		{
+			show_error("Method Not Allowed", 405);
+		}
+	}
+
+	public function deleteUserDonatur($username)
+	{
+		$this->users->deluser($username);
+		$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['User Berhasil Dihapus']));
+		return redirect(base_url('AdminController/userDonatur'));
+	}
+
+	public function deleteUserAnakPanti($username)
+	{
+		$this->users->deluser($username);
+		$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['User Berhasil Dihapus']));
+		return redirect(base_url('AdminController/userAnakPanti'));
 	}
 }
