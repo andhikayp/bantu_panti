@@ -1,0 +1,5 @@
+cache
+cache/*
+config/database.php
+config/config.php
+config/constants.php

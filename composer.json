@@ -1,23 +1,32 @@
 {
-	"description": "The CodeIgniter framework",
-	"name": "codeigniter/framework",
-	"type": "project",
-	"homepage": "https://codeigniter.com",
-	"license": "MIT",
-	"support": {
-		"forum": "http://forum.codeigniter.com/",
-		"wiki": "https://github.com/bcit-ci/CodeIgniter/wiki",
-		"slack": "https://codeigniterchat.slack.com",
-		"source": "https://github.com/bcit-ci/CodeIgniter"
-	},
-	"require": {
-		"php": ">=5.3.7"
-	},
-	"suggest": {
-		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
-	},
-	"require-dev": {
-		"mikey179/vfsStream": "1.1.*",
-		"phpunit/phpunit": "4.* || 5.*"
-	}
+    "name": "Test Unit",
+    "description": "Test Unit.",
+    "keywords": [
+        "php test",
+        "jenkins"
+    ],
+    "license": "MIT",
+    "type": "project"
+    ,
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "jakub-onderka/php-parallel-lint": "^1.0",
+        "phploc/phploc": "^4.0",
+        "phpunit/phpunit": "~5.7",
+        "sebastian/phpcpd": "^3.0",
+        "squizlabs/php_codesniffer": "3.*",
+        "phpmd/phpmd" : "@stable"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "repositories": {
+        "hooks": {
+            "type": "composer",
+            "url": "https://larapack.io"
+        }
+    }
 }
