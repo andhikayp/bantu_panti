@@ -68,8 +68,6 @@ class AdminController extends MY_Protectedcontroller
 			}
 
 			$status = $this->users->createUserDonatur($username, $password);
-			// var_dump($status); return;
-
 			if(!$status){
 				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
 				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
@@ -112,8 +110,6 @@ class AdminController extends MY_Protectedcontroller
 			}
 
 			$status = $this->users->createUserAnakPanti($username, $password);
-			// var_dump($status); return;
-
 			if(!$status){
 				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
 				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
@@ -210,8 +206,42 @@ class AdminController extends MY_Protectedcontroller
 		return redirect(base_url('AdminController/userAnakPanti'));
 	}
 
+	public function lihatProfilPanti()
+	{
+		$data['panti'] = $this->users->get_profil_panti(1);
+		$this->slice->view('dashboard.profil.panti.lihat', $data);
+	}
+
 	public function profilPanti()
 	{
-		$this->slice->view('dashboard.profil.panti.tambah');
+		$data['panti'] = $this->users->get_profil_panti(1);
+		if(!in_array($this->session->user_login['role'], $this->can_write))
+		{
+			show_404();
+		}
+		if ($_SERVER['REQUEST_METHOD'] == "GET")
+		{
+			$this->slice->view('dashboard.profil.panti.tambah', $data);
+		}
+		elseif($_SERVER['REQUEST_METHOD'] == "POST")
+		{
+			$input = $this->input->post(NULL, TRUE);
+			$status = $this->users->updateProfilPanti(1, $input);
+			if(!$status)
+			{
+				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
+				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
+				return redirect(base_url('AdminController/profilPanti'.$data));	
+			}
+			else
+			{
+				$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Sukses Update Hasil Survey']));
+				return redirect(base_url('AdminController/profilPanti'));	
+			}
+		}
+		else
+		{
+			show_error("Method Not Allowed", 405);
+		}
 	}
 }

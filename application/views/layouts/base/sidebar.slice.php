@@ -89,10 +89,15 @@
                     </a>
                 </li> -->
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Panti Asuhan</span></li>
+                <li>
+                    <a href="{{ base_url('AdminController/LihatProfilPanti') }}">
+                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Lihat Profil Panti</span>
+                    </a>
+                </li>
                 @if($this->session->user_login['role'] == 'd01')
-                    <li>
+                <li>
                     <a href="{{ base_url('AdminController/profilPanti') }}">
-                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Profil Panti</span>
+                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Ubah Profil Panti</span>
                     </a>
                 </li>
                 @endif

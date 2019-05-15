@@ -23,7 +23,6 @@
         @endif
     @endif
 </div>
-
 <nav class="breadcrumb bg-white push">
     <a class="breadcrumb-item" href="{{ base_url('/') }}">Dashboard</a>
     <span class="breadcrumb-item active">Upload</span>

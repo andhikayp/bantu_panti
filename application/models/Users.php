@@ -156,5 +156,38 @@
                 return false;
             }
         }
+
+        public function get_profil_panti($id)
+        {
+            $sql = "SELECT * from profil_panti where id = ? ;"; 
+            return $this->db->query($sql, array($id))->first_row();
+        }
+
+        public function updateProfilPanti($id, $data = []){
+            if(sizeof($data) <= 0)
+            {
+                return 0;
+            }
+            $update_data = [
+                'nama_panti' => $data['nama_panti'],
+                'alamat_panti' => $data['alamat_panti'],
+                'no_telp_panti' => $data['no_telp_panti'],
+                'deskripsi_panti' => $data['deskripsi_panti'],
+                'visi' => $data['visi'],
+                'misi' => $data['misi'],
+                'no_rekening_bank' => $data['no_rekening_bank'],
+                'nama_bank' => $data['nama_bank'],
+                'nama_ketua_panti' => $data['nama_ketua_panti'],
+            ];
+
+            $this->db->where('id',$id);
+            try{
+                $this->db->update('profil_panti', $update_data);
+                return true;
+            }catch(Exception $e)
+            {
+                return false;
+            }
+        }
     }
 ?>   
