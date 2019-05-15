@@ -209,4 +209,9 @@ class AdminController extends MY_Protectedcontroller
 		$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['User Berhasil Dihapus']));
 		return redirect(base_url('AdminController/userAnakPanti'));
 	}
+
+	public function profilPanti()
+	{
+		$this->slice->view('dashboard.profil.panti.tambah');
+	}
 }

@@ -41,13 +41,11 @@ class Auth extends CI_Controller {
 	function dologin() 
 	{ 
 		$status = $this->validation();
-
 		if($status == FALSE)
 		{
 			$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
 			return redirect(base_url('auth/index'));
 		}
-
 		$username = $this->input->post('loginUsername', TRUE); 
 		$password = $this->input->post('loginPassword', TRUE); 
 		$password = crypt($password,'jaDzqvi93kHFY'); 
@@ -71,17 +69,18 @@ class Auth extends CI_Controller {
 				'id_role' => $user->id_role,
 				'role_kode' => $user->kode_sekolah,
 				);
-
 			$this->session->set_userdata('user_login',$data_session);
-
-
 			redirect(base_url("dashboard/index")); 
 		} 
-		
 		else 
 		{ 
 			$this->session->set_flashdata('message', array('type' => 'error', 'message' => ["Username atau password tidak sesuai"]));
 			redirect(base_url("auth/index")); 
 		} 
+	}
+
+	public function register()
+	{
+		$this->slice->view('auth/register');
 	}
 }

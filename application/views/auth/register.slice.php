@@ -27,7 +27,7 @@
                 <div class="px-30 py-10">
                     
                     <h1 class="h3 font-w700 mt-30 mb-10">Selamat Datang di Bantu Panti</h1>
-                    <h2 class="h5 font-w400 text-muted mb-0">Masuk terlebih dahulu</h2>
+                    <h2 class="h5 font-w400 text-muted mb-0">Buat Akun Donatur</h2>
                 </div>
                 <!-- END Header -->
 
@@ -64,6 +64,14 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-12">
+                            <div class="form-material form-material-primary floating">
+                                <input type="password" class="form-control" id="loginPassword" name="loginPassword">
+                                <label for="loginPassword">Confirm Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="login-remember-me" name="login-remember-me">
                                 <label class="custom-control-label" for="login-remember-me">Remember Me</label>
@@ -75,11 +83,11 @@
                             <button type="submit" class="btn btn-sm btn-hero btn-alt-primary">
                                 <i class="si si-login mr-10"></i> Masuk
                             </button>
-                            <button  class="btn btn-sm btn-hero btn-alt-danger" style="float: right;">
+                            <!-- <button  class="btn btn-sm btn-hero btn-alt-danger" style="float: right;">
                                 <a href="{{ base_url('auth/register') }}">
                                     <i class="si si-login mr-10"></i> Buat Akun
                                 </a>
-                            </button>
+                            </button> -->
                         </span>
                         <!-- <div class="mt-30">
                             <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="op_auth_signup2.html">

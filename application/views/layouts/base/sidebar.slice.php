@@ -88,6 +88,14 @@
                         <i class="fa fa-bar-chart "></i><span class="sidebar-mini-hide">Statistik</span>
                     </a>
                 </li> -->
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Panti Asuhan</span></li>
+                @if($this->session->user_login['role'] == 'd01')
+                    <li>
+                    <a href="{{ base_url('AdminController/profilPanti') }}">
+                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Profil Panti</span>
+                    </a>
+                </li>
+                @endif
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen User</span></li>
                 @if($this->session->user_login['role'] == 'd01')
                 <li>
