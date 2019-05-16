@@ -91,13 +91,13 @@
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Panti Asuhan</span></li>
                 <li>
                     <a href="{{ base_url('AdminController/LihatProfilPanti') }}">
-                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Lihat Profil Panti</span>
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Lihat Profil Panti</span>
                     </a>
                 </li>
                 @if($this->session->user_login['role'] == 'd01')
                 <li>
                     <a href="{{ base_url('AdminController/profilPanti') }}">
-                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Ubah Profil Panti</span>
+                        <i class="fa fa-retweet"></i><span class="sidebar-mini-hide">Ubah Profil Panti</span>
                     </a>
                 </li>
                 @endif
@@ -116,7 +116,7 @@
                         @if($this->router->fetch_class() == 'AdminController' && ($this->router->fetch_method() == 'userDonatur' || $this->router->fetch_method() == 'tambahUserDonatur' || $this->router->fetch_method() == 'resetPasswordDonatur'))
                             active
                         @endif">
-                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Donatur</span>
+                        <i class="fa fa-check-circle"></i><span class="sidebar-mini-hide">Donatur</span>
                     </a>
                 </li>
                 @else
@@ -129,8 +129,14 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Sekolah</span></li>
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Kegiatan Panti</span></li>
                 <li>
+                    <a href="{{ base_url('KegiatanController/tambahKegiatan') }}">
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Lihat Kegiatan</span>
+                    </a>
+                </li>
+                <!-- <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Sekolah</span></li> -->
+                <!-- <li>
                     <a href="{{ base_url('SekolahController/index') }}" class="
                         @if($this->router->fetch_class() == 'SekolahController' && $this->router->fetch_method() == 'index')
                             active
@@ -186,7 +192,7 @@
                         @endif">
                         <i class="fa fa-wrench"></i><span class="sidebar-mini-hide">4. Kondisi Sekolah</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Laporan</span></li>
                 <li>
                     <a href="{{ base_url('PetugasController/downIndex') }}" class="
