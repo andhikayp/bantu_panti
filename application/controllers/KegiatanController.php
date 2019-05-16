@@ -18,6 +18,7 @@ class KegiatanController extends MY_Protectedcontroller
 		$this->load->model('ruang');
 		$this->load->model('kondisi');
 		$this->load->model('users');
+		$this->load->model('kegiatan');
 
 		if($this->session->user_login['username']){
 			$this->username = $this->session->user_login['username'];			
@@ -34,12 +35,12 @@ class KegiatanController extends MY_Protectedcontroller
 
 	public function lihatKegiatan()
 	{
-		echo "yes";return; 
+		$data['kegiatan'] = $this->kegiatan->lihatKegiatan();
+		$this->slice->view('dashboard.kegiatan.lihat', $data);
 	}
 
 	public function tambahKegiatan()
 	{
-		// $data['panti'] = $this->users->get_profil_panti(1);
 		if(!in_array($this->session->user_login['role'], $this->can_write))
 		{
 			show_404();
@@ -51,22 +52,27 @@ class KegiatanController extends MY_Protectedcontroller
 		elseif($_SERVER['REQUEST_METHOD'] == "POST")
 		{
 			$input = $this->input->post(NULL, TRUE);
-			// $status = $this->users->updateProfilPanti(1, $input);
-			// if(!$status)
-			// {
-			// 	$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
-			// 	$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
-			// 	return redirect(base_url('KegiatanController/tambahKegiatan'.$data));	
-			// }
-			// else
-			// {
-			// 	$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Sukses Update Hasil Survey']));
-			// 	return redirect(base_url('AdminController/profilPanti'));	
-			// }
+			$status = $this->kegiatan->insertKegiatan($input);
+			if(!$status)
+			{
+				$this->session->set_flashdata('message', array('type' => 'error', 'message' => [validation_errors()]));
+				$this->session->set_flashdata('post_data', $this->input->post(NULL, TRUE));
+				return redirect(base_url('KegiatanController/tambahKegiatan'.$data));	
+			}
+			else
+			{
+				$this->session->set_flashdata('message', array('type' => 'success', 'message' => ['Sukses Menambah Story Kegiatan']));
+				return redirect(base_url('kegiatanController/lihatKegiatan'));	
+			}
 		}
 		else
 		{
 			show_error("Method Not Allowed", 405);
 		}
+	}
+
+	public function lihatDetailKegiatan($id)
+	{
+		var_dump($id);return;
 	}
 }

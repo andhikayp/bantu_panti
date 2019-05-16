@@ -131,8 +131,13 @@
                 @endif
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Kegiatan Panti</span></li>
                 <li>
+                    <a href="{{ base_url('KegiatanController/lihatKegiatan') }}">
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Lihat Story Kegiatan</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ base_url('KegiatanController/tambahKegiatan') }}">
-                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Lihat Kegiatan</span>
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Story Kegiatan</span>
                     </a>
                 </li>
                 <!-- <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Sekolah</span></li> -->

@@ -33,7 +33,7 @@
         <h3 class="block-title">Selamat Datang di Dashboard</h3>
     </div>
     <div class="block-content">
-        <h2 class="content-heading text-default">ALUR PENGISIAN KONDISI KERUSAKAN SEKOLAH</h2>
+        <h2 class="content-heading text-default">ALUR DONASI</h2>
         <div class="row gutters-tiny">
             <div class="col-md-6 col-xl-3">
                 <div class="block block-rounded">
@@ -43,7 +43,7 @@
                             <div class="mb-20">
                                 <i class="fa fa-user fa-3x text-danger"></i>
                             </div>
-                            <div class="font-size-sm font-w600 text-uppercase text-danger">1. Profil Petugas</div>
+                            <div class="font-size-sm font-w600 text-uppercase text-danger">1. Melengkapi Profil</div>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                             <div class="mb-20">
                                 <i class="fa fa-list fa-3x text-danger"></i>
                             </div>
-                            <div class="font-size-sm font-w600 text-uppercase text-danger">2. Pelaksanaan Survey</div>
+                            <div class="font-size-sm font-w600 text-uppercase text-danger">2. Mengisi Donatur</div>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
             </div>
         </div>
 
-        <h2 class="content-heading text-default">KETERANGAN</h2>
+        <!-- <h2 class="content-heading text-default">KETERANGAN</h2>
         <div class="row">
             <div class="col-lg-6 col-6">
                 <div class="text-blue">
@@ -168,7 +168,7 @@
                     <p><i class="fa fa-arrow-right mr-5"></i> Downlaod laporan (cover, laporan kondisi kerusakan) pada <b class="text-danger">Menu Download Laporan</b></p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 @endsection

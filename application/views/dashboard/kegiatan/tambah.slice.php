@@ -26,7 +26,7 @@
 
 <nav class="breadcrumb bg-white push">
     <a class="breadcrumb-item" href="{{ base_url('/') }}">Dashboard</a>
-    <!-- <a class="breadcrumb-item" href="{{ base_url('/PetugasController/hasil_survey') }}">Pelaksanaan Survey</a> -->
+    <a class="breadcrumb-item" href="{{ base_url('/kegiatanController/lihatKegiatan') }}">Lihat Kegiatan</a>
     <span class="breadcrumb-item active">Tambah Kegiatan Panti</span>
 </nav>
 <div class="block">
