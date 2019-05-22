@@ -27,5 +27,11 @@
             $sql = "SELECT * from kegiatan;"; 
             return $this->db->query($sql)->result();
         }
+
+        public function lihatDetailKegiatan($id)
+        {
+            $sql = "SELECT * from kegiatan where id = ? ;"; 
+            return $this->db->query($sql, array($id))->first_row();
+        }
     }
 ?>

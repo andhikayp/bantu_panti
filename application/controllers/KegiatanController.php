@@ -73,6 +73,8 @@ class KegiatanController extends MY_Protectedcontroller
 
 	public function lihatDetailKegiatan($id)
 	{
+		$data['detail_kegiatan'] = $this->kegiatan->lihatDetailKegiatan($id);
+
 		var_dump($id);return;
 	}
 }
