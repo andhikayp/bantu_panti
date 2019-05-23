@@ -155,12 +155,12 @@
 
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Pengeluaran</span></li>
                 <li>
-                    <a href="{{ base_url('DonasiController/index') }}">
+                    <a href="{{ base_url('PengeluaranController/index') }}">
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Riwayat Pengeluaran</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ base_url('DonasiController/tambahDonasi') }}">
+                    <a href="{{ base_url('PengeluaranController/tambahPengeluaran') }}">
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Pengeluaran</span>
                     </a>
                 </li>
