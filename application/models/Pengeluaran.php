@@ -3,7 +3,7 @@
     {     
         public function lihatPengeluaran()
         {
-            $sql = "SELECT * from donasi order by tanggal_donasi desc;"; 
+            $sql = "SELECT * from pengeluaran order by tanggal_pengeluaran desc;"; 
             return $this->db->query($sql)->result();
         }
 

@@ -38,7 +38,7 @@
             <div class="form-group row">
                 <div class="col-12">
                     <div class="form-material form-material-primary floating input-group">
-                        <input type="text" class="form-control" id="nominal_donasi" name="nominal_donasi">
+                        <input type="text" class="form-control" id="nominal_pengeluaran" name="nominal_pengeluaran">
                         <label for="pihak_sekolah">Nominal Pengeluaran</label>
                         <div class="input-group-append">
                             <span class="input-group-text">Contoh: 500000</span>
@@ -49,7 +49,7 @@
             <div class="form-group row">
                 <div class="col-12">
                     <div class="form-material form-material-primary floating input-group">
-                        <input type="text" class="form-control" id="keterangan_donasi" name="keterangan_donasi">
+                        <input type="text" class="form-control" id="keterangan_pengeluaran" name="keterangan_pengeluaran">
                         <label for="pihak_sekolah">Keterangan Pengeluaran</label>
                         <!-- <div class="input-group-append">
                             <span class="input-group-text">Contoh: Pak Fajar</span>

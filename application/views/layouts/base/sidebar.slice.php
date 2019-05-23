@@ -125,7 +125,12 @@
                         @if($this->router->fetch_class() == 'PetugasController' && ($this->router->fetch_method() == 'indexProfil' || $this->router->fetch_method() == 'editProfil'))
                             active
                         @endif">
-                        <i class="fa fa-user"></i><span class="sidebar-mini-hide">Profil Petugas</span>
+                        @if($this->session->user_login['role']=="ap01")
+                            <i class="fa fa-user"></i><span class="sidebar-mini-hide">Profil Anak Panti</span>
+                        @endif
+                        @if($this->session->user_login['role']=="p01")
+                            <i class="fa fa-user"></i><span class="sidebar-mini-hide">Profil Donatur</span>
+                        @endif
                     </a>
                 </li>
                 @endif
@@ -135,12 +140,15 @@
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Lihat Story Kegiatan</span>
                     </a>
                 </li>
+                @if($this->session->user_login['role']!="p01")
                 <li>
                     <a href="{{ base_url('KegiatanController/tambahKegiatan') }}">
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Story Kegiatan</span>
                     </a>
                 </li>
+                @endif
 
+                @if($this->session->user_login['role'] != 'ap01')
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Donasi</span></li>
                 <li>
                     <a href="{{ base_url('DonasiController/index') }}">
@@ -152,83 +160,26 @@
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Donasi</span>
                     </a>
                 </li>
+                @endif
 
+                @if($this->session->user_login['role'] != 'ap01')
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Pengeluaran</span></li>
                 <li>
                     <a href="{{ base_url('PengeluaranController/index') }}">
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Riwayat Pengeluaran</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ base_url('PengeluaranController/tambahPengeluaran') }}">
-                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Pengeluaran</span>
-                    </a>
-                </li>
-                <!-- @if($this->session->user_login['role'] == 'd01')
-                <li>
-                    <a href="{{ base_url('AdminController/profilPanti') }}">
-                        <i class="fa fa-retweet"></i><span class="sidebar-mini-hide">Ubah Profil Panti</span>
-                    </a>
-                </li>
-                @endif -->
-                <!-- <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Sekolah</span></li> -->
-                <!-- <li>
-                    <a href="{{ base_url('SekolahController/index') }}" class="
-                        @if($this->router->fetch_class() == 'SekolahController' && $this->router->fetch_method() == 'index')
-                            active
-                        @endif">
-                        <i class="fa fa-university"></i><span class="sidebar-mini-hide">Data Sekolah</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ base_url('SekolahController/anggaran') }}" class="
-                        @if($this->router->fetch_class() == 'SekolahController' && $this->router->fetch_method() == 'anggaran')
-                            active
-                        @endif">
-                        <i class="fa fa-retweet"></i><span class="sidebar-mini-hide">Anggaran Sekolah</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ base_url('SekolahController/anggaran_kecamatan') }}" class="
-                        @if($this->router->fetch_class() == 'SekolahController' && $this->router->fetch_method() == 'anggaranamatan')
-                            active
-                        @endif">
-                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Anggaran Tiap Kecamatan</span>
-                    </a>
-                </li>
-                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Pengisian</span></li>
-                <li>
-                    <a href="{{ base_url('PetugasController/hasil_survey') }}" class="
-                        @if($this->router->fetch_class() == 'PetugasController' && $this->router->fetch_method() == 'hasil_survey')
-                            active
-                        @endif">
-                        <i class="fa fa-check-circle"></i><span class="sidebar-mini-hide">1. Pelaksanaan Survey</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ base_url('PetugasController/upIndex') }}" class="
-                        @if($this->router->fetch_class() == 'PetugasController' && ($this->router->fetch_method() == 'upIndex' || $this->router->fetch_method() == 'lihatLayout' || $this->router->fetch_method() == 'uploadLayout'))
-                            active
-                        @endif">
-                        <i class="fa fa-upload"></i><span class="sidebar-mini-hide">2. Layout Plan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ base_url('SekolahController/ruangSekolah') }}" class="
-                        @if($this->router->fetch_class() == 'SekolahController' && ($this->router->fetch_method() == 'ruangSekolah' || $this->router->fetch_method() == 'lihatRuang' || $this->router->fetch_method() == 'tambahRuang' || $this->router->fetch_method() == 'ubahRuang' || $this->router->fetch_method() == 'fotoRuang' || $this->router->fetch_method() == 'cekFotoRuang'))
-                            active
-                        @endif">
-                        <i class="fa fa-building"></i><span class="sidebar-mini-hide">3. Ruang Sekolah</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ base_url('SekolahController/kondisiSekolah') }}" class="
-                        @if($this->router->fetch_class() == 'SekolahController' && ($this->router->fetch_method() == 'kondisiSekolah' || $this->router->fetch_method() == 'lihatKondisi' || $this->router->fetch_method() == 'lihatKondisiRuang' || $this->router->fetch_method() == 'uploadKondisi' || $this->router->fetch_method() == 'kesimpulanKondisi'))
-                            active
-                        @endif">
-                        <i class="fa fa-wrench"></i><span class="sidebar-mini-hide">4. Kondisi Sekolah</span>
-                    </a>
-                </li> -->
+                    @if($this->session->user_login['role']!="p01")
+                    <li>
+                        <a href="{{ base_url('PengeluaranController/tambahPengeluaran') }}">
+                            <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Pengeluaran</span>
+                        </a>
+                    </li>
+                    @endif
+                @endif
+                
+
+                @if($this->session->user_login['role'] == 'a01' || $this->session->user_login['role'] == 'd01')
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Laporan</span></li>
                 <li>
                     <a href="{{ base_url('PetugasController/downIndex') }}" class="
@@ -246,6 +197,7 @@
                         <i class="fa fa-download"></i><span class="sidebar-mini-hide">Download Laporan Pengeluaran</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
         <!-- END Side Navigation -->

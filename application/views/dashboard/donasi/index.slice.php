@@ -43,7 +43,9 @@
                         <th class="text-center">Jumlah Donasi</th>
                         <th class="text-center">Tanggal Donasi</th>
                         <th class="text-center" style="width: 40%">Keterangan Donasi</th>
+                        @if($this->session->user_login['role']!="p01")
                         <th class="text-center">Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -54,20 +56,22 @@
                         <td class="text-center">{{ $data->nominal_donasi }}</td>
                         <td class="text-center">{{ $data->tanggal_donasi }}</td>
                         <td class="text-center" style="width: 40%">{{ $data->keterangan_donasi }}</td>
-                        <td class="text-center" style="min-width: 260px">
-                        @if($data->tanggal_konfirmasi == null && $data->bukti_donasi != null)
-                            <span>
-                                <a href="{{ base_url('DonasiController/konfirmasiDonasi/'.$data->id_donasi) }}" class="btn btn-sm bg-earth text-white mr-2"><i class="fa fa-refresh mr-2"></i>Lihat</a>
-                                <a href="{{ base_url('DonasiController/konfirmasiDonasi/'.$data->id_donasi) }}" class="btn btn-sm btn-primary mr-2"><i class="fa fa-refresh mr-2"></i>Validate</a>
-                                <button value="{{ base_url('AdminController/deleteDonatur/'.$data->id_donasi) }}" class="btn btn-sm btn-danger hapus-satu"><i class="fa fa-trash mr-2"></i>Hapus</button>
-                            </span>
-                        @else
-                            <span>
-                                <a href="{{ base_url('DonasiController/konfirmasiDonasi/'.$data->id_donasi) }}" class="btn btn-sm bg-earth text-white mr-2"><i class="fa fa-refresh mr-2"></i>Telah Tervalidasi</a>
-                                <!-- <button value="{{ base_url('AdminController/deleteDonatur/'.$data->id_donasi) }}" class="btn btn-sm btn-danger hapus-satu"><i class="fa fa-trash mr-2"></i>Hapus</button> -->
-                            </span>
+                        @if($this->session->user_login['role']!="p01")
+                            <td class="text-center" style="min-width: 260px">
+                            @if($data->tanggal_konfirmasi == null && $data->bukti_donasi != null)
+                                <span>
+                                    <a href="{{ base_url('DonasiController/konfirmasiDonasi/'.$data->id_donasi) }}" class="btn btn-sm bg-earth text-white mr-2"><i class="fa fa-refresh mr-2"></i>Lihat</a>
+                                    <a href="{{ base_url('DonasiController/konfirmasiDonasi/'.$data->id_donasi) }}" class="btn btn-sm btn-primary mr-2"><i class="fa fa-refresh mr-2"></i>Validate</a>
+                                    <button value="{{ base_url('AdminController/deleteDonatur/'.$data->id_donasi) }}" class="btn btn-sm btn-danger hapus-satu"><i class="fa fa-trash mr-2"></i>Hapus</button>
+                                </span>
+                            @else
+                                <span>
+                                    <a href="{{ base_url('DonasiController/konfirmasiDonasi/'.$data->id_donasi) }}" class="btn btn-sm bg-earth text-white mr-2"><i class="fa fa-refresh mr-2"></i>Telah Tervalidasi</a>
+                                    <!-- <button value="{{ base_url('AdminController/deleteDonatur/'.$data->id_donasi) }}" class="btn btn-sm btn-danger hapus-satu"><i class="fa fa-trash mr-2"></i>Hapus</button> -->
+                                </span>
+                            @endif
+                            </td>
                         @endif
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
