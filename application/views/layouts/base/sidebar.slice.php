@@ -140,6 +140,37 @@
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Story Kegiatan</span>
                     </a>
                 </li>
+
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Donasi</span></li>
+                <li>
+                    <a href="{{ base_url('DonasiController/index') }}">
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Riwayat Donasi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ base_url('DonasiController/tambahDonasi') }}">
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Donasi</span>
+                    </a>
+                </li>
+
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Pengeluaran</span></li>
+                <li>
+                    <a href="{{ base_url('DonasiController/index') }}">
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Riwayat Pengeluaran</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ base_url('DonasiController/tambahDonasi') }}">
+                        <i class="fa fa-share"></i><span class="sidebar-mini-hide">Tambah Pengeluaran</span>
+                    </a>
+                </li>
+                <!-- @if($this->session->user_login['role'] == 'd01')
+                <li>
+                    <a href="{{ base_url('AdminController/profilPanti') }}">
+                        <i class="fa fa-retweet"></i><span class="sidebar-mini-hide">Ubah Profil Panti</span>
+                    </a>
+                </li>
+                @endif -->
                 <!-- <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Sekolah</span></li> -->
                 <!-- <li>
                     <a href="{{ base_url('SekolahController/index') }}" class="
@@ -204,7 +235,7 @@
                         @if($this->router->fetch_class() == 'PetugasController' && $this->router->fetch_method() == 'downIndex')
                             active
                         @endif">
-                        <i class="fa fa-download"></i><span class="sidebar-mini-hide">Download Laporan</span>
+                        <i class="fa fa-download"></i><span class="sidebar-mini-hide">Download Laporan Donasi</span>
                     </a>
                 </li>
                 <li>
@@ -212,7 +243,7 @@
                         @if($this->router->fetch_class() == 'Download' && $this->router->fetch_method() == 'surveyor')
                             active
                         @endif">
-                        <i class="fa fa-download"></i><span class="sidebar-mini-hide">Download Surveyor</span>
+                        <i class="fa fa-download"></i><span class="sidebar-mini-hide">Download Laporan Pengeluaran</span>
                     </a>
                 </li>
             </ul>
