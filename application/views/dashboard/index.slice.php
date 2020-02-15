@@ -33,7 +33,24 @@
         <h3 class="block-title">Selamat Datang di Dashboard</h3>
     </div>
     <div class="block-content">
-        <h2 class="content-heading text-default">ALUR DONASI</h2>
+        <div id="body">
+              <h3>Deskripsi Sistem</h3>
+              <h4 style="text-transform: underline">Product Knowledge</h4>
+              <ul>
+              <li>Menampilkan daftar produk beserta harga</li>
+              <li>Menambahkan data produk</li>
+              <ul>
+               <li>Nama</li>
+               <li>Jumlah</li>
+               <li>Harga</li>
+              </ul>
+              <li>Develop by <b>Andhika Yoga Perdana</b></li>
+              <li>NRP : 05111740000101</li>
+              <li>Kelas : PBKK - A</li>
+              </ul>
+        </div>
+
+        <!-- <h2 class="content-heading text-default">ALUR DONASI</h2>
         <div class="row gutters-tiny">
             <div class="col-md-6 col-xl-3">
                 <div class="block block-rounded">
@@ -141,7 +158,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <h2 class="content-heading text-default">KETERANGAN</h2>
         <div class="row">

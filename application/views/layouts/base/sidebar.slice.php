@@ -27,7 +27,7 @@
                 <div class="content-header-item">
                     <a class="link-effect font-w700" href="#">
                         <i class="fa fa-database text-primary"></i>
-                        <span class="font-size-xl text-dual-primary-dark">Bantu</span> <span class="font-size-xl text-primary">Panti</span>
+                        <span class="font-size-xl text-dual-primary-dark">Online</span> <span class="font-size-xl text-primary">Shop</span>
                     </a>
                 </div>
                 <!-- END Logo -->
@@ -40,15 +40,15 @@
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                <img class="img-avatar img-avatar32" src="http://localhost/bantu_panti//upload/paket_20190127-082258.png"
-                    alt="">
+                {{-- <img class="img-avatar img-avatar32" src="http://localhost/bantu_panti//upload/paket_20190127-082258.png"
+                    alt=""> --}}
             </div>
             <!-- END Visible only in mini mode -->
 
             <!-- Visible only in normal mode -->
             <div class="sidebar-mini-hidden-b text-center">
                 <a class="img-link" href="#">
-                    <img class="img-avatar" src="http://localhost/bantu_panti//upload/paket_20190127-082258.png" alt="">
+                    {{-- <img class="img-avatar" src="http://localhost/bantu_panti//upload/paket_20190127-082258.png" alt=""> --}}
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
@@ -80,15 +80,23 @@
                         <i class="fa fa-home"></i><span class="sidebar-mini-hide">Dashboard</span>
                     </a>
                 </li>
-                <!-- <li>
-                    <a href="{{ base_url('AdminController/statistik') }}" class="
-                        @if($this->router->fetch_class() == 'AdminController' && $this->router->fetch_method() == 'statistik')
+                <li>
+                    <a href="{{ base_url('/') }}" class="
+                        @if($this->router->fetch_class() == 'dashboard' && $this->router->fetch_method() == 'index')
                             active
                         @endif">
-                        <i class="fa fa-bar-chart "></i><span class="sidebar-mini-hide">Statistik</span>
+                        <i class="fa fa-home"></i><span class="sidebar-mini-hide">About</span>
                     </a>
-                </li> -->
-                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Panti Asuhan</span></li>
+                </li>
+                <li>
+                    <a href="{{ base_url('/') }}" class="
+                        @if($this->router->fetch_class() == 'dashboard' && $this->router->fetch_method() == 'index')
+                            active
+                        @endif">
+                        <i class="fa fa-home"></i><span class="sidebar-mini-hide">Contact</span>
+                    </a>
+                </li>
+                <!-- <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Panti Asuhan</span></li>
                 <li>
                     <a href="{{ base_url('AdminController/LihatProfilPanti') }}">
                         <i class="fa fa-share"></i><span class="sidebar-mini-hide">Lihat Profil Panti</span>
@@ -197,7 +205,7 @@
                         <i class="fa fa-download"></i><span class="sidebar-mini-hide">Download Laporan Pengeluaran</span>
                     </a>
                 </li>
-                @endif
+                @endif -->
             </ul>
         </div>
         <!-- END Side Navigation -->

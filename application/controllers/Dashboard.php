@@ -28,4 +28,14 @@ class Dashboard extends MY_Protectedcontroller
 	{
 		$this->slice->view('dashboard/index');
 	}
+
+	public function about()
+	{
+		$this->slice->view('shop/about');
+	}
+
+	public function contact()
+	{
+		$this->slice->view('shop/contact');
+	}
 }
